@@ -35,7 +35,7 @@
             ${messageJsp}
         </main>
         <footer>
-            <a href="booksList">Books List</a>
+            <a href="booksList">Users List</a>
         </footer>
     </body>
 </html>
