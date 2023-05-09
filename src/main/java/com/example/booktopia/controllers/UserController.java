@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     @Autowired
     UserService userService;
-    @RequestMapping("/createBook")
+    @RequestMapping("/createUser")
     public String createUser(){return "CreateUser";}
 
     @RequestMapping("saveUser")
