@@ -13,23 +13,24 @@ public class CategoryServiceImpl  implements CategoryService {
 
     @Override
     public Category updateCategory(Category category) {
-        return null;
+        return category;
     }
 
     @Override
-    public Category getCategory(Long id) {
-        return null;
-    }
+   public Category getCategory(Long id) {return null;}
+
+
 
     @Override
     public List<Category> getAllCategories() {
-        return null;
+        return categoryRepository.findAll();
     }
 
     @Override
     public void deleteCategoryById(Long id) {
-
+        categoryRepository.deleteById(id);
     }
+
 
     @Override
     public void deleteAllCategories() {

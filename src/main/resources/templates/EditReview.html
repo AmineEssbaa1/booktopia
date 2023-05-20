@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Review - ThymeLeaf</title>
+</head>
+<body>
+<header>
+    <h1>Update Review</h1>
+</header>
+<main>
+    <form th:action="@{updateReview}" method="POST">
+        <input type="hidden" name="id" th:value="${reviewJsp.idReview}">
+
+        <label for="dateCreate">Date:</label>
+        <input type="date" id="dateCreate" name="dateCreate" th:value="${reviewJsp.dateCreate}" >
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" th:value="${reviewJsp.rating}">
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" required th:text="${reviewJsp.reviewComments}"></textarea>
+
+        <button type="submit">Update Review</button>
+    </form>
+</main>
+</body>
+</html>

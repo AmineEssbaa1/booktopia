@@ -29,7 +29,7 @@
             ${messageJsp}
         </main>
         <footer>
-            <a href="CategoryList">Category List </a>
+            <a href="CategoriesList">Category List </a>
         </footer>
     </body>
 </html>

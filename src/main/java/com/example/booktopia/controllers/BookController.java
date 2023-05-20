@@ -8,6 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 public class BookController {
     @Autowired
@@ -27,6 +29,13 @@ public class BookController {
     modelMap.addAttribute("messageJsp",massageController);
 
     return "CreateBook";
+
+    }
+    @RequestMapping("/BooksList")
+    public String booksList(ModelMap modelMap){
+        List<Book> booksController = bookService.getAllBooks();
+        modelMap.addAttribute("booksJsp",booksController);
+        return "BooksList";
 
     }
 }

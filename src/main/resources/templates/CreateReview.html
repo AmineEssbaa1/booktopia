@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Create Review</title>
+</head>
+<body>
+<header>
+    <h1>Create Review - Thymeleaf</h1>
+</header>
+<main>
+    <form th:action="@{saveReview}" method="post">
+
+        <label for="rating">Rating:</label>
+        <input type="text" id="rating" name="rating"><br><br>
+
+        <label for="reviewComments">Review Comments:</label>
+        <textarea id="reviewComments" name="reviewComments"></textarea><br><br>
+        <label for="dateCreate">Creation Date:</label>
+        <input type="date" id="dateCreate" value="${now}"name="dateCreate"><br><br>
+
+        <input type="submit" value="Save Review">
+    </form>
+</main>
+<footer>
+    <a href="reviewsList">View Reviews</a>
+</footer>
+</body>
+</html>

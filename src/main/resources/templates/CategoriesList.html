@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Category List</title>
+</head>
+<body>
+<header>
+    <div class="p-1 text-center bg-light">
+    <h1 calss="mb-3">Category List - Thymeleaf</h1>
+    </div>
+</header>
+<main>
+    <table >
+        <tr>
+            <th>Category Id</th>
+            <th>description_category</th>
+            <th>Label</th>
+        </tr>
+            <tr th:each="category:${categoriesJsp}" >
+                <td th:text="${category.idCategory}"></td>
+                <td th:text="${category.description_category}"></td>
+                <td th:text="${category.label}"></td>
+
+
+                <td><a onClick="return confirm('Are you delete this item')" th:href="@{deleteCategory(id=${category.idCategory})}">DELETE </a></td>
+                <td><a onClick="return confirm('Are you sure you want to update this item?')" th:href="@{showCategory(id=${category.idCategory})}">Update</a></td>
+
+            </tr>
+    </table>
+</main>
+<footer>
+    <a href="createCategory">Category Creation</a>
+</footer>
+</body>
+</html>
+
+
+
