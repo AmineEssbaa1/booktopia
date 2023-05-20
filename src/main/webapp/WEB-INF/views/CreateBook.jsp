@@ -12,14 +12,32 @@
         </header>
         <main>
             <form action="saveBook" method="post">
+                <div>
+                    <label for="title">Title : </label>
+                    <input type="text" id="title" name="title">
+                </div>
 
                 <div>
-                    <label for="designationBook">designationBook : </label>
+                    <label for="ISBN">ISBN : </label>
+                    <input type="text" id="ISBN" name="ISBN">
+                </div>
+
+                <div>
+                    <label for="publisher">Publisher : </label>
+                    <input type="text" id="publisher" name="publisher">
+                </div>
+
+                <div>
+                    <label for="designationBook">Designation : </label>
                     <input type="text" id="designationBook" name="designationBook">
                 </div>
                 <div>
                     <label for="Author"> Author : </label>
             	     <input type="text" id="Author" name="Author" >
+                </div>
+                 <div>
+                      <label for="datePublishing"> Date Publishing : </label>
+                      <input type="date" id="datePublishing" name="dateJsp" value="${now}" >
                 </div>
                 <div>
                      <label for="Review"> Review : </label>
