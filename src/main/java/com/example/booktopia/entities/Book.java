@@ -14,28 +14,28 @@ public class Book {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBook ;
     private String title;
-    private String ISBN;
+    private String isbn;
     private String publisher;
 
     private String designationBook;
 
-    private String Author;
-    private Date datePulishing;
-    private String  Review;
+    private String author;
+    private Date datePublishing;
+    private String review;
 
     public Book() {
         super();
     }
 
-    public Book(Long idBook, String title, String ISBN, String publisher, String designationBook, String author, Date datePulishing, String review) {
+    public Book(Long idBook, String title, String isbn, String publisher, String designationBook, String author, Date datePublishing, String review) {
         this.idBook = idBook;
         this.title = title;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.publisher = publisher;
         this.designationBook = designationBook;
-        Author = author;
-        this.datePulishing = datePulishing;
-        Review = review;
+        this.author = author;
+        this.datePublishing = datePublishing;
+        this.review = review;
     }
 
     public Long getIdBook() {
@@ -46,8 +46,8 @@ public class Book {
         return title;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
     public String getPublisher() {
@@ -59,15 +59,15 @@ public class Book {
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
-    public Date getDatePulishing() {
-        return datePulishing;
+    public Date getDatePublishing() {
+        return datePublishing;
     }
 
     public String getReview() {
-        return Review;
+        return review;
     }
 
     public void setIdBook(Long idBook) {
@@ -78,8 +78,8 @@ public class Book {
         this.title = title;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public void setPublisher(String publisher) {
@@ -90,16 +90,14 @@ public class Book {
         this.designationBook = designationBook;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
-    }
+    public void setAuthor(String author) {this.author = author;}
 
-    public void setDatePulishing(Date datePulishing) {
-        this.datePulishing = datePulishing;
+    public void setDatePublishing(Date datePublishing) {
+        this.datePublishing = datePublishing;
     }
 
     public void setReview(String review) {
-        Review = review;
+        this.review = review;
     }
 
     @Override
@@ -107,12 +105,12 @@ public class Book {
         return "Book{" +
                 "idBook=" + idBook +
                 ", title='" + title + '\'' +
-                ", ISBN='" + ISBN + '\'' +
+                ", isbn='" + isbn + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", designationBook='" + designationBook + '\'' +
-                ", Author='" + Author + '\'' +
-                ", datePulishing=" + datePulishing +
-                ", Review='" + Review + '\'' +
+                ", author='" + author + '\'' +
+                ", datePublishing=" + datePublishing +
+                ", review='" + review + '\'' +
                 '}';
     }
 }

@@ -18,8 +18,8 @@
                 </div>
 
                 <div>
-                    <label for="ISBN">ISBN : </label>
-                    <input type="text" id="ISBN" name="ISBN">
+                    <label for="isbn">ISBN : </label>
+                    <input type="text" id="isbn" name="isbn">
                 </div>
 
                 <div>
@@ -32,16 +32,16 @@
                     <input type="text" id="designationBook" name="designationBook">
                 </div>
                 <div>
-                    <label for="Author"> Author : </label>
-            	     <input type="text" id="Author" name="Author" >
+                    <label for="author"> Author : </label>
+            	     <input type="text" id="author" name="author" >
                 </div>
                  <div>
                       <label for="datePublishing"> Date Publishing : </label>
                       <input type="date" id="datePublishing" name="dateJsp" value="${now}" >
                 </div>
                 <div>
-                     <label for="Review"> Review : </label>
-                     <input type="text" id="Review" name="Review" >
+                     <label for="review"> Review : </label>
+                     <input type="text" id="review" name="review" >
                 </div>
                 <div>
                     <input type="submit" value="Save">
