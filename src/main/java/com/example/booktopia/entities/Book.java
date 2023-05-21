@@ -1,26 +1,39 @@
 package com.example.booktopia.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Entity
 public class Book {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idBook ;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idBook;
+   // @NotNull
+   // @Size(min = 3, max = 12)
+    private String title;
+    private String ISBN;
+    private String publisher;
+
     private String designationBook;
-    private String Author;
 
-    private String  Review;
-
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date datePublishing;
+   // @PastOrPresent
     @Override
     public String toString() {
         return "Book{" +
                 "idBook=" + idBook +
+                ", title='" + title + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", publisher='" + publisher + '\'' +
                 ", designationBook='" + designationBook + '\'' +
-                ", Author='" + Author + '\'' +
-                ", Review='" + Review + '\'' +
+                ", datePublishing=" + datePublishing +
                 '}';
     }
 
@@ -28,10 +41,13 @@ public class Book {
         super();
     }
 
-    public Book(String designationBook, String author, String review) {
+    public Book(Long idBook, String title, String ISBN, String publisher, String designationBook, Date datePublishing) {
+        this.idBook = idBook;
+        this.title = title;
+        this.ISBN = ISBN;
+        this.publisher = publisher;
         this.designationBook = designationBook;
-        Author = author;
-        Review = review;
+        this.datePublishing = datePublishing;
     }
 
     public Long getIdBook() {
@@ -42,6 +58,30 @@ public class Book {
         this.idBook = idBook;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
     public String getDesignationBook() {
         return designationBook;
     }
@@ -50,19 +90,11 @@ public class Book {
         this.designationBook = designationBook;
     }
 
-    public String getAuthor() {
-        return Author;
+    public Date getDatePublishing() {
+        return datePublishing;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
-    }
-
-    public String getReview() {
-        return Review;
-    }
-
-    public void setReview(String review) {
-        Review = review;
+    public void setDatePublishing(Date datePublishing) {
+        this.datePublishing = datePublishing;
     }
 }
