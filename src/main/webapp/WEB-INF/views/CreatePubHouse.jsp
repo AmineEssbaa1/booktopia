@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Publishing House Creation</title>
-    </head>
-    <body>
-        <header>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publishing House Creation</title>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+               <div class="container">
+                   <a class="navbar-brand" href="#">Publishing House</a>
+                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarNav">
+                       <ul class="navbar-nav ml-auto">
+                           <li class="nav-item">
+                               <a class="nav-link" href="booksList">Book</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="pubHousesList">Publishing House</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="authorsList">Author</a>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </nav>
+
+    <main class="container">
+        <header class="my-4 text-center">
             <h1>Publishing House Creation</h1>
         </header>
-        <main>
-            <form action="savePubHouse" method="post">
+        <form action="savePubHouse" method="post">
+            <div class="mb-3">
+                <label hidden for="idPubHouse">Id:</label>
+                <input hidden type="text" id="idPubHouse" name="idPubHouse" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="namePubHouse">Name:</label>
+                <input type="text" id="namePubHouse" name="namePubHouse" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="addressPubHouse">Address:</label>
+                <input type="text" id="addressPubHouse" name="addressPubHouse" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="emailPubHouse">Email:</label>
+                <input type="email" id="emailPubHouse" name="emailPubHouse" class="form-control">
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary">
+                <a href="pubHousesList" class="btn btn-secondary">Publishing Houses List</a>
 
-                <div>
-                    <label hidden for="idPubHouse">Id : </label>
-                    <input hidden type="text" id="idPubHouse" name="idPubHouse">
-                </div>
-                <div>
-                    <label for="namePubHouse">Name : </label>
-                    <input type="text" id="namePubHouse" name="namePubHouse">
-                </div>
+            </div>
+        </form>
+        ${messageJsp}
+    </main>
 
-                <div>
-                     <label for="emailPubHouse"> Email : </label>
-                     <input type="email" id="emailPubHouse" name="emailPubHouse" >
-                </div>
-                <div>
-                     <label for="addressPubHouse"> Address : </label>
-                     <input type="text" id="addressPubHouse" name="addressPubHouse" >
-                </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 BookTopia. All rights reserved.</p>
+    </footer>
 
-                <div>
-                    <input type="submit" value="Save">
-                </div>
-            </form>
-            ${messageJsp}
-        </main>
-        <footer>
-            <a href="pubHousesList">Publishing House List </a>
-        </footer>
-    </body>
+    <script src="webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
-
