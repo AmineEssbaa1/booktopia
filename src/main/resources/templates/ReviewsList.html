@@ -1,35 +1,78 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Reviews List - ThymeLeaf</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css"/>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Reviews List</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <header>
-    <h1>Reviews List</h1>
+    <div class="p-1 text-center bg-light">
+        <h1 class="mb-3">Reviews List - Thymeleaf</h1>
+    </div>
 </header>
 <main>
-    <table>
+    <table class="table">
+        <thead>
         <tr>
             <th>Review ID</th>
             <th>Date</th>
             <th>Rating</th>
             <th>Comments</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
-            <tr th:each="review:${reviewsJsp}">
-                <td th:text="${review.idReview}"></td>
-                <td th:text="${review.dateCreate}" }></td>
-                <td th:text="${review.rating}" }></td>
-                <td th:text="${review.reviewComments}" }></td>
-
-                <td><a onClick="return confirm('Are you delete this item')" th:href="@{deleteReview(id=${review.idReview})}">DELETE </a></td>
-                <td><a onClick="return confirm('Are you sure you want to update this item?')" th:href="@{showReview(id=${review.idReview})}">Update</a></td>
-            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="review : ${reviewsJsp}">
+            <td th:text="${review.idReview}"></td>
+            <td th:text="${review.dateCreate}"></td>
+            <td th:text="${review.rating}"></td>
+            <td th:text="${review.reviewComments}"></td>
+            <td><a onclick="return confirm('Are you sure you want to delete this item?')" th:href="@{deleteReview(id=${review.idReview})}">Delete</a></td>
+            <td><a onclick="return confirm('Are you sure you want to update this item?')" th:href="@{showReview(id=${review.idReview})}">Update</a></td>
+        </tr>
+        </tbody>
     </table>
 </main>
 <footer>
     <a href="createReview">Create Review</a>
 </footer>
+<!-- Bootstrap JS -->
+<script src="webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

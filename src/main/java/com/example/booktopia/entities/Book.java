@@ -24,6 +24,8 @@ public class Book {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date datePublishing;
+    @ManyToOne
+    private Category category;
    // @PastOrPresent
     @Override
     public String toString() {

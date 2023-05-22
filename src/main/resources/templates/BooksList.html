@@ -57,18 +57,20 @@
             <th>Publisher</th>
             <th>Designation</th>
             <th>Date Publishing</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="book:${booksJsp}">
+        <tr th:each="book : ${booksJsp}">
             <td th:text="${book.idBook}"></td>
             <td th:text="${book.title}"></td>
             <td th:text="${book.ISBN}"></td>
             <td th:text="${book.publisher}"></td>
             <td th:text="${book.designationBook}"></td>
             <td th:text="${book.datePublishing}"></td>
-            <td><a onClick="return confirm('Are you delete this Book')" th:href="@{deleteBook(id=${book.idBook})}">DELETE</a></td>
-            <td><a onClick="return confirm('Are you delete this Book')" th:href="@{showBook(id=${book.idBook})}">Update</a></td>
+            <td><a onclick="return confirm('Are you sure you want to delete this book?')" th:href="@{deleteBook(id=${book.idBook})}">Delete</a></td>
+            <td><a onclick="return confirm('Are you sure you want to update this book?')" th:href="@{showBook(id=${book.idBook})}">Update</a></td>
         </tr>
         </tbody>
     </table>

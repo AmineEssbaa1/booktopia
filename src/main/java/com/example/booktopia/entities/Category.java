@@ -1,9 +1,9 @@
 package com.example.booktopia.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 public class Category {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +12,8 @@ public class Category {
     private String description_category;
 
     private String label ;
-
+    @OneToMany(mappedBy = "category")
+    private List<Book> books ;
     @Override
     public String toString() {
         return "Category{" +
