@@ -13,6 +13,10 @@
         <main>
             <form action="saveBook" method="post">
                 <div>
+                     <label hidden for="idBook">Title : </label>
+                     <input hidden type="text" id="idBook" name="idBook">
+                </div>
+                <div>
                     <label for="title">Title : </label>
                     <input type="text" id="title" name="title">
                 </div>

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -13,10 +14,11 @@ public class Author {
     private Long idAuthor ;
     private String name;
     private String biography;
-
     private String  nationality;
-//    private Date Date_birth;
-//    private Date Date_death;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateBirth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateDeath;
 
 
     @Override
@@ -26,8 +28,8 @@ public class Author {
                 ", name='" + name + '\'' +
                 ", biography='" + biography + '\'' +
                 ", nationality='" + nationality + '\'' +
-//                ", Date_birth=" + Date_birth +
-//                ", Date_death=" + Date_death +
+                ", dateBirth=" + dateBirth +
+                ", dateDeath=" + dateDeath +
                 '}';
     }
 
@@ -35,13 +37,13 @@ public class Author {
         super();
     }
 
-    public Author(Long idAuthor, String name, String biography, String nationality, Date date_birth, Date date_death) {
+    public Author(Long idAuthor, String name, String biography, String nationality, Date dateBirth, Date dateDeath) {
         this.idAuthor = idAuthor;
         this.name = name;
         this.biography = biography;
         this.nationality = nationality;
-//        Date_birth = date_birth;
-//        Date_death = date_death;
+        this.dateBirth = dateBirth;
+        this.dateDeath = dateDeath;
     }
 
     public Long getIdAuthor() {
@@ -60,13 +62,13 @@ public class Author {
         return nationality;
     }
 
-//    public Date getDate_birth() {
-//        return Date_birth;
-//    }
-//
-//    public Date getDate_death() {
-//        return Date_death;
-//    }
+    public Date getDateBirth() {
+        return dateBirth;
+    }
+
+    public Date getDateDeath() {
+        return dateDeath;
+    }
 
     public void setIdAuthor(Long idAuthor) {
         this.idAuthor = idAuthor;
@@ -84,11 +86,11 @@ public class Author {
         this.nationality = nationality;
     }
 
-//    public void setDate_birth(Date date_birth) {
-//        Date_birth = date_birth;
-//    }
-//
-//    public void setDate_death(Date date_death) {
-//        Date_death = date_death;
-//    }
+    public void setDateBirth(Date dateBirth) {
+        this.dateBirth = dateBirth;
+    }
+
+    public void setDateDeath(Date dateDeath) {
+        this.dateDeath = dateDeath;
+    }
 }

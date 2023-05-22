@@ -3,9 +3,9 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.Author;
 import com.example.booktopia.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -19,27 +19,26 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author updateAuthor(Author author) {
-        return null;
+        return authorRepository.save(author);
     }
 
     @Override
     public Author getAuthor(Long id) {
-        return null;
+        return authorRepository.findById(id).get();
     }
 
     @Override
-    public List<Author> getAllAuthor() {
-        return null;
+    public List<Author> getAllAuthors() {
+        return authorRepository.findAll();
     }
 
     @Override
     public void deleteAuthorById(Long id) {
-
+        authorRepository.deleteById(id);
     }
 
     @Override
     public void deleteAllAuthors() {
-
+        authorRepository.deleteAll();
     }
 }
-

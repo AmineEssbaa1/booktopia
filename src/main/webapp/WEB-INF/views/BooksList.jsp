@@ -14,7 +14,7 @@
         <main>
             <table>
                 <tr>
-                    <th>Book Id</th><th>Book Title</th><th>Book ISBN</th><th>Book Publisher</th><th>Book Designation</th><th>Book Author</th><th>Date Publishing</th><th>Book Review</th>
+                    <th>Book Id</th><th>Title</th><th>ISBN</th><th>Publisher</th><th>Designation</th><th>Author</th><th>Date Publishing</th><th>Review</th>
                 </tr>
                 <c:forEach items="${booksJsp}" var="book">
                 <tr>
