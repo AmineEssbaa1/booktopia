@@ -26,10 +26,9 @@ public class AuthorController {
 
     @RequestMapping("/saveAuthor")
     public String saveAuthor(
-            @ModelAttribute("author") Author author,
-            ModelMap model) {
+            @ModelAttribute("author") Author author
+            ) {
         Author savedAuthor = authorService.saveAuthor(author);
-        model.addAttribute("author", savedAuthor);
         return "CreateAuthor";
     }
 
