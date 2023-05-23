@@ -1,6 +1,9 @@
 package com.example.booktopia.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -9,14 +12,22 @@ import java.util.Date;
 public class Author {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAuthor ;
+    @NotNull
+    @Size(min = 3, max = 10)
     private String name;
+    @NotNull
+    @Size(min = 10, max = 200)
     private String biography;
+    @NotNull
+    @Size(min = 5, max = 20)
     private String  nationality;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     private Date dateBirth;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     private Date dateDeath;
 
 

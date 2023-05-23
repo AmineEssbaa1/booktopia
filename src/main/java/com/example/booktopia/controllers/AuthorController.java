@@ -2,9 +2,11 @@ package com.example.booktopia.controllers;
 
 import com.example.booktopia.entities.Author;
 import com.example.booktopia.services.AuthorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,8 +28,11 @@ public class AuthorController {
 
     @RequestMapping("/saveAuthor")
     public String saveAuthor(
-            @ModelAttribute("author") Author author
-            ) {
+            @Valid Author author, BindingResult bindingResult,ModelMap modelMap
+            ) { if(bindingResult.hasErrors()) {
+                
+        return "CreateAuthor";
+    }
         Author savedAuthor = authorService.saveAuthor(author);
         return "CreateAuthor";
     }
