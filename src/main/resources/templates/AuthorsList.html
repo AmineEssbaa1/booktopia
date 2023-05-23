@@ -57,7 +57,7 @@
 
                             <td><a href="showAuthor?id=${author.idAuthor}" class="btn btn-primary">Edit</a></td>
                             <td><a onClick="return confirm('Are you sure you want to delete this author?')"
-                                   href="deleteAuthor?id=${author.idAuthor}" class="btn btn-danger">Delete</a></td>
+                                   th:href="@{deleteAuthor(id=${author.idAuthor})}" class="btn btn-danger">Delete</a></td>
                         </tr>
                 </tbody>
             </table>
