@@ -24,24 +24,22 @@ public class AuthorController {
         return "CreateAuthor";
     }
 
-    @RequestMapping("saveAuthor")
+    @RequestMapping("/saveAuthor")
     public String saveAuthor(
             @ModelAttribute("author") Author author,
-            @RequestParam("dateBirth") String dateBirthController,
-            @RequestParam("dateDeath") String dateDeathController, ModelMap modelMap) throws ParseException {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateBirth = dateFormat.parse(String.valueOf(dateBirthController));
-        author.setDateBirth(dateBirth);
-
-        Date dateDeath=dateFormat.parse((String.valueOf(dateDeathController)));
-        author.setDateDeath((dateDeath));
-
+            ModelMap model) {
         Author savedAuthor = authorService.saveAuthor(author);
-        String messageController = "The author with ID: " + savedAuthor.getIdAuthor() + " is saved.";
-        modelMap.addAttribute("messageJsp", messageController);
+        model.addAttribute("author", savedAuthor);
         return "CreateAuthor";
     }
+
+
+//    @RequestMapping("/saveAuthor")
+//    public String saveAuthor(
+//            @ModelAttribute("author") Author author) {
+//        Author savedAuthor = authorService.saveAuthor(author);
+//        return "CreateAuthor";
+//    }
 
     @RequestMapping("/authorsList")
     public String authorsList(ModelMap modelMap) {

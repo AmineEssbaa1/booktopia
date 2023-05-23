@@ -23,10 +23,8 @@ public class UserController {
     }
 
     @RequestMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user, ModelMap modelMap) {
+    public String saveUser(@ModelAttribute("user") User user) {
         User savedUser = userService.saveUser(user);
-        String message = "The user with ID: " + savedUser.getIdUser() + " has been saved.";
-        modelMap.addAttribute("message", message);
         return "CreateUser";
     }
 

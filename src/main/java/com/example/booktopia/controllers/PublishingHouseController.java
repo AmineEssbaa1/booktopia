@@ -19,14 +19,11 @@ public class PublishingHouseController {
     PublishingHouseService publishingHouseService ;
     @RequestMapping("/createPubHouse")
     public String createPubHouse(){return "CreatePubHouse";}
-    @RequestMapping("savePubHouse")
+    @RequestMapping("/savePubHouse")
     public String savePubHouse(
-            @ModelAttribute("pubHouse") PublishingHouse publishingHouse,
-            ModelMap modelMap
+            @ModelAttribute("pubHouse") PublishingHouse publishingHouse
     ){
         PublishingHouse memo = publishingHouseService.savePublishingHouse(publishingHouse);
-        String messageController = "The Publishing House whose Id :  " + memo.getIdPubHouse() + " is saved";
-        modelMap.addAttribute("messageJsp",messageController);
         return "CreatePubHouse";
     }
 

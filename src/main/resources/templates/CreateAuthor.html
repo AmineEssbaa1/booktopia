@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css" />
@@ -35,9 +35,9 @@
 
     <main class="container">
         <header class="my-4 text-center">
-            <h1>Author Creation</h1>
+            <h1>Author Creation - Thymeleaf</h1>
         </header>
-        <form action="saveAuthor" method="post">
+        <form th:action="@{saveAuthor}" method="post">
             <div class="mb-3">
                 <label hidden for="idAuthor">Id:</label>
                 <input hidden type="text" id="idAuthor" name="idAuthor" class="form-control">
@@ -67,14 +67,12 @@
                 <a href="authorsList" class="btn btn-secondary">Authors List</a>
             </div>
         </form>
-        ${messageJsp}
     </main>
 
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2023 BookTopia. All rights reserved.</p>
     </footer>
 
-    <script src="webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js
-</body>
-
+    <script src="webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"/>
+    </body>
 </html>
