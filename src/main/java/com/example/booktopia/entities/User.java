@@ -4,14 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
+    @NotNull
+    @Size(min = 5, max = 20)
     private String userName;
+    @NotNull
+    @Size(min = 5, max = 20)
     private String password ;
+    @NotNull
     private String email;
+    @NotNull
+    @Size(min = 5, max = 40)
     private String address ;
 
     @Override

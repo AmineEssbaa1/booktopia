@@ -2,9 +2,11 @@ package com.example.booktopia.controllers;
 
 import com.example.booktopia.entities.User;
 import com.example.booktopia.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +25,11 @@ public class UserController {
     }
 
     @RequestMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@Valid User user, BindingResult bindingResult
+    ) { if(bindingResult.hasErrors()) {
+
+        return "CreateUser";
+    }
         User savedUser = userService.saveUser(user);
         return "CreateUser";
     }
