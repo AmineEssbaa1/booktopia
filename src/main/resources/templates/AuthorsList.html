@@ -55,7 +55,7 @@
                             <td th:text="${author.dateBirth}"></td>
                             <td th:text="${author.dateDeath}"></td>
 
-                            <td><a href="showAuthor?id=${author.idAuthor}" class="btn btn-primary">Edit</a></td>
+                            <td><a th:href="@{showAuthor(id=${author.idAuthor})}" class="btn btn-primary">Edit</a></td>
                             <td><a onClick="return confirm('Are you sure you want to delete this author?')"
                                    th:href="@{deleteAuthor(id=${author.idAuthor})}" class="btn btn-danger">Delete</a></td>
                         </tr>

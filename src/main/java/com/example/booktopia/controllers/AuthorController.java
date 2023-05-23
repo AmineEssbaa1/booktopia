@@ -56,17 +56,7 @@ public class AuthorController {
 
     @RequestMapping("updateAuthor")
     public String updateAuthor(
-            @ModelAttribute("author") Author author,
-            @RequestParam("dateBirth") String dateBirthController,
-            @RequestParam("dateDeath") String dateDeathController, ModelMap modelMap) throws ParseException {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateBirth = dateFormat.parse(String.valueOf(dateBirthController));
-        author.setDateBirth(dateBirth);
-
-        Date dateDeath=dateFormat.parse((String.valueOf(dateDeathController)));
-        author.setDateDeath((dateDeath));
-
+            @ModelAttribute("author") Author author) {
         Author savedAuthor = authorService.saveAuthor(author);
 
         return "CreateAuthor";
