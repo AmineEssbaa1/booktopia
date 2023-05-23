@@ -42,12 +42,10 @@ public class UserController {
         return "EditUser";
     }
 
-    @RequestMapping("/updateUser")
-    public String updateUser(@ModelAttribute("user") User user, ModelMap modelMap) {
+    @RequestMapping("updateUser")
+    public String updateUser(@ModelAttribute("user") User user) {
         User updatedUser = userService.saveUser(user);
-        String message = "The user with ID: " + updatedUser.getIdUser() + " has been updated.";
-        modelMap.addAttribute("message", message);
-        return "EditUser";
+        return "CreateUser";
     }
 
     @RequestMapping("/deleteUser")
