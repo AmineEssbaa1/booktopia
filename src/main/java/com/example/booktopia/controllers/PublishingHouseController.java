@@ -1,9 +1,11 @@
 package com.example.booktopia.controllers;
 import com.example.booktopia.entities.PublishingHouse;
 import com.example.booktopia.services.PublishingHouseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +23,11 @@ public class PublishingHouseController {
     public String createPubHouse(){return "CreatePubHouse";}
     @RequestMapping("/savePubHouse")
     public String savePubHouse(
-            @ModelAttribute("pubHouse") PublishingHouse publishingHouse
-    ){
+            @Valid PublishingHouse publishingHouse, BindingResult bindingResult
+    ) { if(bindingResult.hasErrors()) {
+
+        return "CreatePubHouse";
+    }
         PublishingHouse memo = publishingHouseService.savePublishingHouse(publishingHouse);
         return "CreatePubHouse";
     }

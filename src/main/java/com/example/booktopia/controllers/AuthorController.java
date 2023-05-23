@@ -28,9 +28,9 @@ public class AuthorController {
 
     @RequestMapping("/saveAuthor")
     public String saveAuthor(
-            @Valid Author author, BindingResult bindingResult,ModelMap modelMap
+            @Valid Author author, BindingResult bindingResult
             ) { if(bindingResult.hasErrors()) {
-                
+
         return "CreateAuthor";
     }
         Author savedAuthor = authorService.saveAuthor(author);

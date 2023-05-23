@@ -3,7 +3,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -11,8 +13,17 @@ import jakarta.persistence.Id;
 public class PublishingHouse {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPubHouse ;
+
+    @NotNull
+    @Size(min = 3, max = 10)
     private String namePubHouse;
+
+    @NotNull
+    @Email
     private String emailPubHouse;
+
+    @NotNull
+    @Size(min = 3, max = 10)
     private String  addressPubHouse;
 
     public Long getIdPubHouse() {
