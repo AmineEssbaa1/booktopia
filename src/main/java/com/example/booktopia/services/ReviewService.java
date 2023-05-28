@@ -1,6 +1,7 @@
 package com.example.booktopia.services;
 
 import com.example.booktopia.entities.Review;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface ReviewService {
     List<Review> getAllReviews();
     void deleteReviewById(Long id);
     void deleteAllReviews();
+    Page<Review> getAllReviewsByPage(int page, int size);
+
 }

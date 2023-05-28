@@ -3,6 +3,8 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.Review;
 import com.example.booktopia.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +39,10 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void deleteAllReviews() {
         // Implement the logic for deleting all reviews
+    }
+
+    @Override
+    public Page<Review> getAllReviewsByPage(int page, int size) {
+        return reviewRepository.findAll(PageRequest.of(page, size));
     }
 }

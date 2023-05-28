@@ -3,6 +3,7 @@ package com.example.booktopia.controllers;
 import com.example.booktopia.entities.Book;
 import com.example.booktopia.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,11 +20,17 @@ public class BookController {
     public String createBook(){
         return "CreateBook";
     }
+
+
     @RequestMapping("/deleteBook")
-    public String deleteBook(@RequestParam("id") Long id, ModelMap modelMap) {
+    public String deleteBook(@RequestParam("id") Long id, ModelMap modelMap,
+                             @RequestParam(name = "page",defaultValue = "0")  int page,
+                             @RequestParam(name = "size",defaultValue = "2")int size) {
         bookService.deleteBookById(id);
-        List<Book> booksController = bookService.getAllBooks();
+        Page<Book> booksController = bookService.getAllBooksByPage(page,size);
         modelMap.addAttribute("booksJsp", booksController);
+        modelMap.addAttribute("pages",new int[booksController.getTotalPages()]);
+        modelMap.addAttribute("currentPage",page);
         return "BooksList";
     }
 
@@ -44,9 +51,16 @@ public class BookController {
         return "CreateBook";
     }
     @RequestMapping("/BooksList")
-    public String booksList(ModelMap modelMap) {
-        List<Book> booksController = bookService.getAllBooks();
+    public String booksList(ModelMap modelMap,
+                         @RequestParam(name = "page",defaultValue = "0")  int page,
+                            @RequestParam(name = "size",defaultValue = "2")int size
+                            ) {
+        Page<Book> booksController = bookService.getAllBooksByPage(page,size);
         modelMap.addAttribute("booksJsp", booksController);
+        modelMap.addAttribute("pages",new int[booksController.getTotalPages()]);
+        modelMap.addAttribute("currentPage",page);
+
         return "BooksList";
     }
+
 }

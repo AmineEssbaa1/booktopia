@@ -2,6 +2,8 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.Category;
 import com.example.booktopia.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
@@ -35,6 +37,11 @@ public class CategoryServiceImpl  implements CategoryService {
     @Override
     public void deleteAllCategories() {
 
+    }
+
+    @Override
+    public Page<Category> getAllCategoriesByPage(int page, int size) {
+        return categoryRepository.findAll(PageRequest.of(page, size));
     }
 
 

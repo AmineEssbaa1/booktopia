@@ -2,6 +2,7 @@ package com.example.booktopia.controllers;
 import com.example.booktopia.entities.Category;
 import com.example.booktopia.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,18 +26,29 @@ public class CategoryController {
         return "CreateCategory";
     }
     @RequestMapping("/CategoriesList")
-    public String categoriesList(ModelMap modelMap){
-        List<Category> categoriesController = categoryService.getAllCategories();
-        //System.out.println("list categorie : " +categoriesController);
-        modelMap.addAttribute("categoriesJsp",categoriesController);
+    public String categoriesList(ModelMap modelMap,
+                                 @RequestParam(name = "page",defaultValue = "0")  int page,
+                                 @RequestParam(name = "size",defaultValue = "2")int size
+    ){
+        Page<Category> categoriesController = categoryService.getAllCategoriesByPage(page,size);
+        modelMap.addAttribute("categoriesJsp", categoriesController);
+        modelMap.addAttribute("pages",new int[categoriesController.getTotalPages()]);
+        modelMap.addAttribute("currentPage",page);
+
         return "CategoriesList";
     }
 
     @RequestMapping("/deleteCategory")
-    public String deleteCategory(@RequestParam("id")Long id, ModelMap modelMap){
+    public String deleteCategory(@RequestParam("id")Long id, ModelMap modelMap,
+                                 @RequestParam(name = "page",defaultValue = "0")  int page,
+                                 @RequestParam(name = "size",defaultValue = "2")int size
+    ){
         categoryService.deleteCategoryById(id);
-        List<Category> categoriesController = categoryService.getAllCategories();
-        modelMap.addAttribute("categoriesJsp",categoriesController);
+        Page<Category> categoriesController = categoryService.getAllCategoriesByPage(page,size);
+        modelMap.addAttribute("categoriesJsp", categoriesController);
+        modelMap.addAttribute("pages",new int[categoriesController.getTotalPages()]);
+        modelMap.addAttribute("currentPage",page);
+
         return "CategoriesList";
     }
     @RequestMapping("/showCategory")
