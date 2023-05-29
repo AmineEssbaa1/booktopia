@@ -47,7 +47,7 @@ public class AuthorController {
 
     @RequestMapping("/authorsList")
     public String authorsList(ModelMap modelMap) {
-        List<Author> authorsController = authorService.getAllAuthors();
+        List<Author> authorsController = authorService.findAllAuthorsByNameSort();
         modelMap.addAttribute("authorsJsp", authorsController);
         return "AuthorsList";
     }
