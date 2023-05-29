@@ -18,8 +18,12 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >Authors</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{createAuthor}">New</a></li>
-                <li><a class="dropdown-item" th:href="@{authorsList}">List</a></li>
+                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                    <a class="dropdown-item" th:href="@{createAuthor}">New</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" th:href="@{authorsList}">List</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -28,7 +32,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >Publishing Houses</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{createPubHouse}">New</a></li>
+                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a class="dropdown-item" th:href="@{createPubHouse}">New</a>
+                </li>
                 <li><a class="dropdown-item" th:href="@{pubHousesList}">List</a></li>
             </ul>
         </li>

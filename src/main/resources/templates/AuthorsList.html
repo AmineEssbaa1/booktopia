@@ -59,13 +59,16 @@ layout:decorate="Template.html"
                             <td th:text="${author.dateBirth}"></td>
                             <td th:text="${author.dateDeath}"></td>
 
-                            <td><a th:href="@{showAuthor(id=${author.idAuthor})}" class="btn btn-primary">Edit</a></td>
+                            <td th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                                <a th:href="@{showAuthor(id=${author.idAuthor})}" class="btn btn-primary">Edit</a></td>
 
-                            <td><a onClick="return confirm('Are you sure you want to delete this author?')"
+                            <td th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                                <a onClick="return confirm('Are you sure you want to delete this author?')"
                                    th:href="@{deleteAuthor(id=${author.idAuthor},
                                     page=${currentPage},
                                    size=${size}
-                                   )}" class="btn btn-danger">Delete</a></td>
+                                   )}" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                 </tbody>
             </table>
@@ -79,7 +82,7 @@ layout:decorate="Template.html"
             </ul>
 
             <div class="mb-3">
-                <a href="createAuthor" class="btn btn-secondary">Create Author</a>
+                <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" href="createAuthor" class="btn btn-secondary">Create Author</a>
             </div>
         </main>
 

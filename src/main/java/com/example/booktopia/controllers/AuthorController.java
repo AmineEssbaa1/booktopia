@@ -110,4 +110,10 @@ public class AuthorController {
     }
 
 
+    @GetMapping("/accessDenied")
+    public String accessDenied(){
+        return "accessDenied";
+    }
+
+
 }
