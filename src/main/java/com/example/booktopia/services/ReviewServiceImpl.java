@@ -26,10 +26,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review getReview(Long id) {
-        // Implement the logic for retrieving a review by ID
-        return null;
-    }
+    public Review getReview(Long id) {return reviewRepository.findById(id).get();}
 
     @Override
     public List<Review> getAllReviews() { return reviewRepository.findAll();}

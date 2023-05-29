@@ -62,5 +62,10 @@ public class BookController {
 
         return "BooksList";
     }
+    //Landing Page !!
+    @RequestMapping("/MainBook")
+    public String booksList(ModelMap modelMap){
+        return "MainBook";
+    }
 
 }
