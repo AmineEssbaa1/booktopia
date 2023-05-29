@@ -41,4 +41,9 @@ public class AuthorServiceImpl implements AuthorService {
     public void deleteAllAuthors() {
         authorRepository.deleteAll();
     }
+
+    @Override
+    public List<Author> findAllAuthorsByNameSort() {
+        return authorRepository.findAllAuthorsByNameSort();
+    }
 }
