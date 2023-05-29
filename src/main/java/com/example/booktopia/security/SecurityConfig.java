@@ -18,6 +18,52 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.formLogin();
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createAuthor").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updateAuthor").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/saveAuthor").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showAuthor").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deleteAuthor").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/authorsList").hasAnyRole("ADMIN","USER");
+
+
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createCategory").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updateCategory").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/saveCategory").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showCategory").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deleteCategory").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/categoriesList").hasAnyRole("ADMIN","USER");
+
+
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createPubHouse").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updatePubHouse").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/savePubHouse").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showPubHouse").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deletePubHouse").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/pubHousesList").hasAnyRole("ADMIN","USER");
+
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createBook").hasAnyRole("ADMIN","AUTHOR");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updateBook").hasAnyRole("ADMIN","AUTHOR");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/saveBook").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showBook").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deleteBook").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/booksList").hasAnyRole("ADMIN","USER");
+
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createReview").hasRole("USER");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updateReview").hasAnyRole("USER");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/saveReview").hasRole("USER");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showReview").hasRole("USER");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deleteReview").hasRole("USER");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/reviewsList").hasAnyRole("ADMIN","AUTHOR");
+
+
+        httpSecurity.authorizeHttpRequests().requestMatchers("/createUser").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/updateUser").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/saveUser").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/showUser").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/deleteUser").hasRole("ADMIN");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/usersList").hasRole("ADMIN");
+
+
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
         return httpSecurity.build();
 
