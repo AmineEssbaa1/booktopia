@@ -4,24 +4,33 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
-    private String UserName;
-    private String Password ;
-    private String Email;
-    private String Address ;
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String userName;
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String password ;
+    @NotNull
+    private String email;
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String address ;
 
     @Override
     public String toString() {
         return "User{" +
                 "idUser=" + idUser +
-                ", UserName='" + UserName + '\'' +
-                ", Password='" + Password + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Address='" + Address + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 
@@ -31,10 +40,10 @@ public class User {
 
     public User(Long idUser, String userName, String password, String email, String address) {
         this.idUser = idUser;
-        UserName = userName;
-        Password = password;
-        Email = email;
-        Address = address;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.address = address;
     }
 
     public Long getIdUser() {
@@ -46,34 +55,34 @@ public class User {
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 }

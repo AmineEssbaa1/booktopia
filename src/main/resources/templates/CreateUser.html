@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,7 @@
            </nav>
 </header>
 <main class="container mt-4">
-    <form action="saveUser" method="post">
+    <form th:action="@{saveUser}" method="post">
         <div class="mb-3">
             <label hidden for="idUser">Id:</label>
             <input hidden type="text" id="idUser" name="idUser" class="form-control">
@@ -58,7 +58,6 @@
                         <a href="usersList" class="btn btn-secondary">Users List</a>
 
     </form>
-    ${messageJsp}
 </main>
 
 <footer class="bg-dark text-white text-center py-3">
