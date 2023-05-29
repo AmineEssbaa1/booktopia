@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.ultraq.net.nz/thymeleaf-extras-springsecurity6"
+>
 <head>
     <meta charset="UTF-8">
     <title>Authors Management</title>
@@ -45,11 +47,11 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" th:text="${#authentication.name}">username</a>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="dropdown-item" href="#">login</a>
+                    <a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="/login">login</a>
                 </li>
                 <li>
                     <form method="post" th:action="@{/logout}">
-                        <button class="dropdown-item" type="submit">logout</button>
+                        <button sec:authorize="isAuthenticated()" class="dropdown-item" type="submit">logout</button>
 
                     </form>
                 </li>

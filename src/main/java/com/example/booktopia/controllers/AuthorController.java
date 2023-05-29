@@ -115,5 +115,9 @@ public class AuthorController {
         return "accessDenied";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 
 }

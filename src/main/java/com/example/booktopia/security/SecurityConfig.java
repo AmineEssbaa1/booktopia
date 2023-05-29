@@ -17,7 +17,8 @@ public class SecurityConfig {
     PasswordEncoder passwordEncoder;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.formLogin();
+        httpSecurity.formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll();
+        httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**").permitAll();
 //        httpSecurity.authorizeHttpRequests().requestMatchers("/createAuthor").hasRole("ADMIN");
 //        httpSecurity.authorizeHttpRequests().requestMatchers("/updateAuthor").hasRole("ADMIN");
 //        httpSecurity.authorizeHttpRequests().requestMatchers("/saveAuthor").hasRole("ADMIN");
