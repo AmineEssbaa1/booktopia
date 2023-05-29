@@ -12,15 +12,15 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
     @NotNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 50)
     private String userName;
     @NotNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 50)
     private String password ;
     @NotNull
     private String email;
     @NotNull
-    @Size(min = 5, max = 40)
+    @Size(min = 3, max = 50)
     private String address ;
 
     @Override

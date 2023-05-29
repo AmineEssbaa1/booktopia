@@ -13,13 +13,13 @@ public class Author {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAuthor ;
     @NotNull
-    @Size(min = 3, max = 10)
+    @Size(min = 3, max = 50)
     private String name;
     @NotNull
-    @Size(min = 10, max = 200)
+    @Size(min = 3, max = 50)
     private String biography;
     @NotNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 50)
     private String  nationality;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -15,7 +15,7 @@ public class PublishingHouse {
     private Long idPubHouse ;
 
     @NotNull
-    @Size(min = 3, max = 10)
+    @Size(min = 3, max = 50)
     private String namePubHouse;
 
     @NotNull
@@ -23,7 +23,7 @@ public class PublishingHouse {
     private String emailPubHouse;
 
     @NotNull
-    @Size(min = 3, max = 10)
+    @Size(min = 3, max = 50)
     private String  addressPubHouse;
 
     public Long getIdPubHouse() {
