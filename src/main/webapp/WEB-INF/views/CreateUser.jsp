@@ -25,7 +25,6 @@
                      <label for="Email"> Email : </label>
                      <input type="text" id="Email" name="Email" >
                 </div>
-                div>
                       <label for="Address"> Address : </label>
                       <input type="text" id="Address" name="Address" >
                 </div>
@@ -36,7 +35,7 @@
             ${messageJsp}
         </main>
         <footer>
-            <a href="booksList">Books List</a>
+            <a href="booksList">Users List</a>
         </footer>
     </body>
 </html>
