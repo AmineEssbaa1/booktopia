@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Category Edition - Thymeleaf</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Category Edition - Thymeleaf</a>
+  </div>
+</nav>
+<main class="container mt-4">
+  <form th:action="@{updateCategory}" method="post">
+    <div class="form-group">
+      <label for="idCategory">Category ID:</label>
+      <input type="text" class="form-control" id="idCategory" name="idCategory" th:value="${categoryJsp.idCategory}">
+    </div>
+    <div class="form-group">
+      <label for="description_category">Description:</label>
+      <input type="text" class="form-control" id="description_category" name="description_category" th:value="${categoryJsp.description_category}">
+    </div>
+    <div class="form-group">
+      <label for="label">Label:</label>
+      <input type="text" class="form-control" id="label" name="label" th:value="${categoryJsp.label}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Category</button>
+  </form>
+</main>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

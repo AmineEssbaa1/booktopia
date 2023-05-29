@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Category List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Categories List</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">TEst</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-4">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Category Id</th>
+      <th>Description</th>
+      <th>Label</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category: ${categoriesJsp.content}">
+      <td th:text="${category.idCategory}"></td>
+      <td th:text="${category.description_category}"></td>
+      <td th:text="${category.label}"></td>
+      <td>
+        <a onclick="return confirm('Are you sure you want to delete this item?')"
+           th:href="@{deleteCategory(id=${category.idCategory},
+                    page=${currentPage},
+                    size=${size})}" class="btn btn-danger btn-sm">Delete</a>
+        <a onclick="return confirm('Are you sure you want to update this item?')"
+           th:href="@{showCategory(id=${category.idCategory}, page=${currentPage},
+                     size=${size})}" class="btn btn-primary btn-sm">Update</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <ul class="nav nav-pills">
+    <li th:each="page,status:${pages}">
+      <a th:class="${status.index == currentPage ? 'btn btn-primary' : 'btn'}"
+         th:href="@{CategoriesList(page=${status.index}, size=${size})}"
+         th:text="${status.index}"></a>
+    </li>
+  </ul>
+  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <a href="createCategory" class="btn btn-success">create Category</a>
+  </div>
+</main>
+<footer class="footer bg-dark text-white py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-left">
+        <p>&copy; 2023 Book Site. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Home</a></li>
+          <li class="list-inline-item"><a href="#">Books</a></li>
+          <li class="list-inline-item"><a href="#">About</a></li>
+          <li class="list-inline-item"><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

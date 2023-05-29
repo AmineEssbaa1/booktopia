@@ -1,0 +1,9 @@
+--insert into users(username,password,enabled) values ("admin","123",true)
+--insert into users(username,password,enabled) values ("author","123",true)
+--insert into users(username,password,enabled) values ("user","123",true)
+--
+--
+--
+--insert into authorities(username,authority) values ("admin","ADMIN")
+--insert into authorities(username,authority) values ("author","AUTHOR")
+--insert into authorities(username,authority) values ("user","USER")

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Review - ThymeLeaf</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Update Review - ThymeLeaf</a>
+  </div>
+</nav>
+<main class="container mt-4">
+  <form th:action="@{updateReview}" method="post">
+    <input type="hidden" name="id" th:value="${reviewsJsp.idReview}">
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" th:value="${reviewsJsp.rating}">
+    </div>
+    <div class="form-group">
+      <label for="comments">Comments:</label>
+      <textarea class="form-control" id="comments" name="comments" required th:text="${reviewsJsp.reviewComments}"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="dateCreate">Date:</label>
+      <input type="date" class="form-control" id="dateCreate" name="dateCreate" th:value="${reviewsJsp.dateCreate}">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Update Reviiew</button>
+  </form>
+</main>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
