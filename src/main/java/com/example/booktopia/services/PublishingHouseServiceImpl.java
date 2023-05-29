@@ -3,6 +3,8 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.PublishingHouse;
 import com.example.booktopia.repositories.PublishingHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +41,10 @@ public class PublishingHouseServiceImpl implements PublishingHouseService {
     public void deletePublishingHouses() {
         publishingHouseRepository.deleteAll();
 
+    }
+
+    @Override
+    public Page<PublishingHouse> getAllPubHousesByPage(int page, int size) {
+        return publishingHouseRepository.findAll(PageRequest.of(page, size));
     }
 }

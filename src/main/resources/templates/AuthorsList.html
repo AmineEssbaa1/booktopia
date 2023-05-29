@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr th:each="author:${authorsJsp}">
+                        <tr th:each="author:${authorsJsp.content}">
                             <td th:text="${author.idAuthor}"></td>
                             <td th:text="${author.name}"></td>
                             <td th:text="${author.biography}"></td>
@@ -56,11 +56,24 @@
                             <td th:text="${author.dateDeath}"></td>
 
                             <td><a th:href="@{showAuthor(id=${author.idAuthor})}" class="btn btn-primary">Edit</a></td>
+
                             <td><a onClick="return confirm('Are you sure you want to delete this author?')"
-                                   th:href="@{deleteAuthor(id=${author.idAuthor})}" class="btn btn-danger">Delete</a></td>
+                                   th:href="@{deleteAuthor(id=${author.idAuthor},
+                                    page=${currentPage},
+                                   size=${size}
+                                   )}" class="btn btn-danger">Delete</a></td>
                         </tr>
                 </tbody>
             </table>
+
+            <ul class="nav nav-pills">
+                <li th:each="page, status:${pages}">
+                    <a th:class="${status.index==currentPage? 'btn btn-primary':'btn'}"
+                       th:href="@{authorsList(page=${status.index}, size=${size})}"
+                       th:text="${status.index}"></a>
+                </li>
+            </ul>
+
             <div class="mb-3">
                 <a href="createAuthor" class="btn btn-secondary">Create Author</a>
             </div>

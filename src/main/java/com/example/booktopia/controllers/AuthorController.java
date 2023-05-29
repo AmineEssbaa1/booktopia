@@ -4,6 +4,7 @@ import com.example.booktopia.entities.Author;
 import com.example.booktopia.services.AuthorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -29,10 +30,11 @@ public class AuthorController {
     @RequestMapping("/saveAuthor")
     public String saveAuthor(
             @Valid Author author, BindingResult bindingResult
-            ) { if(bindingResult.hasErrors()) {
+    ) {
+        if (bindingResult.hasErrors()) {
 
-        return "CreateAuthor";
-    }
+            return "CreateAuthor";
+        }
         Author savedAuthor = authorService.saveAuthor(author);
         return "CreateAuthor";
     }
@@ -45,10 +47,23 @@ public class AuthorController {
 //        return "CreateAuthor";
 //    }
 
+
+//    @RequestMapping("/authorsList")
+//    public String authorsList(ModelMap modelMap) {
+//        List<Author> authorsController = authorService.findAllAuthorsByNameSort();
+//        modelMap.addAttribute("authorsJsp", authorsController);
+//        return "AuthorsList";
+//    }
+
     @RequestMapping("/authorsList")
-    public String authorsList(ModelMap modelMap) {
-        List<Author> authorsController = authorService.findAllAuthorsByNameSort();
+    public String authorsList(ModelMap modelMap,
+                              @RequestParam(name = "page", defaultValue = "0") int page,
+                              @RequestParam(name = "size", defaultValue = "5") int size
+    ) {
+        Page<Author> authorsController = authorService.getAllAuthorsByPage(page, size);
         modelMap.addAttribute("authorsJsp", authorsController);
+        modelMap.addAttribute("pages", new int[authorsController.getTotalPages()]);
+        modelMap.addAttribute("currentPage", page);
         return "AuthorsList";
     }
 
@@ -67,11 +82,24 @@ public class AuthorController {
         return "CreateAuthor";
     }
 
+//    @RequestMapping("/deleteAuthor")
+//    public String deleteAuthor(@RequestParam("id") Long id, ModelMap modelMap) {
+//        authorService.deleteAuthorById(id);
+//        List<Author> authorsController = authorService.getAllAuthors();
+//        modelMap.addAttribute("authorsJsp", authorsController);
+//        return "AuthorsList";
+//    }
+
+
     @RequestMapping("/deleteAuthor")
-    public String deleteAuthor(@RequestParam("id") Long id, ModelMap modelMap) {
+    public String deleteAuthor(@RequestParam("id") Long id, ModelMap modelMap,
+                               @RequestParam(name = "page", defaultValue = "0") int page,
+                               @RequestParam(name = "size", defaultValue = "5") int size) {
         authorService.deleteAuthorById(id);
-        List<Author> authorsController = authorService.getAllAuthors();
-        modelMap.addAttribute("authorsJsp", authorsController);
-        return "AuthorsList";
+    Page<Author> authorsController = authorService.getAllAuthorsByPage(page, size);
+        modelMap.addAttribute("authorsJsp",authorsController);
+        modelMap.addAttribute("pages",new int[authorsController.getTotalPages()]);
+        modelMap.addAttribute("currentPage",page);
+        return"AuthorsList";
     }
 }

@@ -53,10 +53,21 @@
                             <td th:text="${pubHouse.addressPubHouse}"></td>
                             <td><a th:href="@{showPubHouse(id=${pubHouse.idPubHouse})}" class="btn btn-primary">Edit</a></td>
                             <td><a onClick="return confirm('Are you sure you want to delete this item?')"
-                                th:href="@{deletePubHouse(id=${pubHouse.idPubHouse})}" class="btn btn-danger">Delete</a></td>
+                                th:href="@{deletePubHouse(id=${pubHouse.idPubHouse},
+                                page=${currentPage},
+                                   size=${size})}" class="btn btn-danger">Delete</a></td>
                         </tr>
                 </tbody>
             </table>
+
+            <ul class="nav nav-pills">
+                <li th:each="page, status:${pages}">
+                    <a th:class="${status.index==currentPage? 'btn btn-primary':'btn'}"
+                       th:href="@{pubHousesList(page=${status.index}, size=${size})}"
+                       th:text="${status.index}"></a>
+                </li>
+            </ul>
+
             <div class="mb-3">
                 <a href="createPubHouse" class="btn btn-secondary">Create Publishing House</a>
             </div>

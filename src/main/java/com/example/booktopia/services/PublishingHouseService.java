@@ -1,5 +1,7 @@
 package com.example.booktopia.services;
+import com.example.booktopia.entities.Author;
 import com.example.booktopia.entities.PublishingHouse;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,4 +20,7 @@ public interface PublishingHouseService {
     void deletePublishingHouseById(Long id);
 
     void deletePublishingHouses();
+
+    Page<PublishingHouse> getAllPubHousesByPage(int page, int size);
+
 }

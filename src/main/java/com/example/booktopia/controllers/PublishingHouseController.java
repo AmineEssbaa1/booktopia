@@ -1,8 +1,10 @@
 package com.example.booktopia.controllers;
+import com.example.booktopia.entities.Author;
 import com.example.booktopia.entities.PublishingHouse;
 import com.example.booktopia.services.PublishingHouseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -32,10 +34,22 @@ public class PublishingHouseController {
         return "CreatePubHouse";
     }
 
+//    @RequestMapping("/pubHousesList")
+//    public String pubHousesList(ModelMap modelMap){
+//        List<PublishingHouse> publishingHousesController=publishingHouseService.getAllPublishingHouses();
+//        modelMap.addAttribute("pubHousesJsp", publishingHousesController);
+//        return "PubHousesList";
+//    }
+
     @RequestMapping("/pubHousesList")
-    public String pubHousesList(ModelMap modelMap){
-        List<PublishingHouse> publishingHousesController=publishingHouseService.getAllPublishingHouses();
+    public String pubHousesList(ModelMap modelMap,
+                              @RequestParam(name = "page", defaultValue = "0") int page,
+                              @RequestParam(name = "size", defaultValue = "5") int size
+    ) {
+        Page<PublishingHouse> publishingHousesController = publishingHouseService.getAllPubHousesByPage(page, size);
         modelMap.addAttribute("pubHousesJsp", publishingHousesController);
+        modelMap.addAttribute("pages", new int[publishingHousesController.getTotalPages()]);
+        modelMap.addAttribute("currentPage", page);
         return "PubHousesList";
     }
 
@@ -54,12 +68,27 @@ public class PublishingHouseController {
         return "CreatePubHouse";
     }
 
-    @RequestMapping("/deletePubHouse")
-    public String deletePubHouse (@RequestParam("id") Long id, ModelMap modelMap) {
-        publishingHouseService.deletePublishingHouseById(id);
-        List<PublishingHouse> publishingHousesController=publishingHouseService.getAllPublishingHouses();
-        modelMap.addAttribute("pubHousesJsp", publishingHousesController);
-        return "PubHousesList";
+//    @RequestMapping("/deletePubHouse")
+//    public String deletePubHouse (@RequestParam("id") Long id, ModelMap modelMap,
+//                                  @RequestParam(name = "page", defaultValue = "0") int page,
+//                                  @RequestParam(name = "size", defaultValue = "5") int size) {
+//        publishingHouseService.deletePublishingHouseById(id);
+//        List<PublishingHouse> publishingHousesController=publishingHouseService.getAllPublishingHouses();
+//        modelMap.addAttribute("pubHousesJsp", publishingHousesController);
+//        return "PubHousesList";
+//    }
+
+        @RequestMapping("/deletePubHouse")
+        public String deletePubHouse(@RequestParam("id") Long id, ModelMap modelMap,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+            publishingHouseService.deletePublishingHouseById(id);
+            Page<PublishingHouse> pubHousesController = publishingHouseService.getAllPubHousesByPage(page, size);
+            modelMap.addAttribute("pubHousesJsp",pubHousesController);
+            modelMap.addAttribute("pages",new int[pubHousesController.getTotalPages()]);
+            modelMap.addAttribute("currentPage",page);
+            return"PubHousesList";
+
     }
 
 }

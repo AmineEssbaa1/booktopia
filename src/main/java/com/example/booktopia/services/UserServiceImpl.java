@@ -3,6 +3,8 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.User;
 import com.example.booktopia.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,4 +39,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteAllUsers() {userRepository.deleteAll();}
+
+    @Override
+    public Page<User> getAllUsersByPage(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
+    }
 }

@@ -3,6 +3,8 @@ package com.example.booktopia.services;
 import com.example.booktopia.entities.Author;
 import com.example.booktopia.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +47,10 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<Author> findAllAuthorsByNameSort() {
         return authorRepository.findAllAuthorsByNameSort();
+    }
+
+    @Override
+    public Page<Author> getAllAuthorsByPage(int page, int size) {
+        return authorRepository.findAll(PageRequest.of(page, size));
     }
 }
