@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="Template.html">
 
 <head>
@@ -8,174 +10,213 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css">
   <style>
-      .book-image {
-          width: 420px; /* Set the desired width */
-          height: 300px; /* Set the desired height */
-          object-fit: cover; /* Maintain aspect ratio and cover the container */
-      }
+    .book-image {
+      width: 420px; /* Set the desired width */
+      height: 300px; /* Set the desired height */
+      object-fit: cover; /* Maintain aspect ratio and cover the container */
+    }
+<!--    .bg-lightmint {-->
+<!--  background-color: #B9EDDD; /* Replace with your desired light pink color value */-->
+}
+<!--    .hero {-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+<!--      height: 100vh;-->
+<!--    }-->
+
+<!-- .book-image {-->
+<!--      width: 100%; /* Set the width to 100% */-->
+<!--      height: auto; /* Auto-adjust height based on the aspect ratio */-->
+<!--      object-fit: cover; /* Maintain aspect ratio and cover the container */-->
+<!--    }-->
+    .bg-lightmint {
+      background-color: #FFFBE9; /* Replace with your desired light mint color value */
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+<!--      height: 100vh;-->
+    }
+    .carousel-item img {
+      max-width: 100%; /* Set the maximum width for the images */
+      height: auto; /* Auto-adjust height based on the aspect ratio */
+    }
+ .book-showcase .card {
+      margin-bottom: 20px; /* Add spacing between book containers */
+    }
+
+ .rating {
+      color: #FFD700; /* Set the color for the stars */
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
   </style>
+
 
   <title>Book Site</title>
 </head>
 
 <body>
-
-<!--&lt;!&ndash; Navbar &ndash;&gt;-->
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
-<!--  <div class="container">-->
-<!--    <a class="navbar-brand" href="#">Book Site</a>-->
-<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"-->
-<!--            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--      <ul class="navbar-nav ml-auto">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">Home</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">Books</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">About</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">Contact</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</nav>-->
 <div layout:fragment="content">
-<!-- Hero Section -->
-<header class="hero bg-primary text-white text-center py-5">
-  <div class="container">
-    <h1 class="display-4">Discover the World of Books</h1>
-    <p class="lead">Find and explore your favorite books</p>
-    <a href="BooksList" class="btn btn-light btn-lg">Explore Books</a>
-  </div>
-</header>
+  <!-- Hero Section -->
+  <header class="hero bg-lightmint text-white text-center py-5">
+    <div class="container">
+      <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#imageCarousel" data-bs-slide-to="1"></li>
+          <li data-bs-target="#imageCarousel" data-bs-slide-to="2"></li>
+          <!-- Add more indicators as needed -->
+        </ol>
 
-<!-- Book Showcase Section -->
-<section class="book-showcase py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">Featured Books</h2>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book1.jpg" class="card-img-top book-image" alt="Book 1">
-          <div class="card-body">
-            <h5 class="card-title">The Psychology of Money</h5>
-            <p class="card-text">Author: Morgan Housel</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+        <!-- Images -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/images/image4.jpg" class="d-block w-100" alt="Image 1">
           </div>
+          <div class="carousel-item">
+            <img src="/images/image2.png" class="d-block w-100" alt="Image 2">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/image3.jpg" class="d-block w-100" alt="Image 3">
+          </div>
+          <!-- Add more carousel items as needed -->
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book2.jpg" class="card-img-top book-image" alt="Book 2">
-          <div class="card-body">
-            <h5 class="card-title">How Innovation Work</h5>
-            <p class="card-text">Author: Matt Ridely</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+    </div>
+  </header>
+
+  <!-- Book Showcase Section -->
+  <section class="book-showcase py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Featured Books</h2>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book1.jpg" class="card-img-top book-image" alt="Book 1">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 1</h5>
+              <p class="card-text">Book Description 1</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book3.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">Milk and Honey</h5>
-            <p class="card-text">Author: rupi Kaur</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book2.jpg" class="card-img-top book-image" alt="Book 2">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 2</h5>
+              <p class="card-text">Book Description 2</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book4.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">The Prince</h5>
-            <p class="card-text">Author:  Niccolo Machiavelli</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book3.jpg" class="card-img-top book-image" alt="Book 3">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 3</h5>
+              <p class="card-text">Book Description 3</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book5.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">Ego is the enemy</h5>
-            <p class="card-text">Author: Ryan Holiday</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+
+        <!-- Add more book cards here as needed -->
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book4.jpg" class="card-img-top book-image" alt="Book 4">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 4</h5>
+              <p class="card-text">Book Description 4</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book6.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">The Art Of War</h5>
-            <p class="card-text">Author: Sun Tzu</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book5.jpg" class="card-img-top book-image" alt="Book 5">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 5</h5>
+              <p class="card-text">Book Description 5</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book7.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">thus spoke zarathustra</h5>
-            <p class="card-text">Author: Friedrich nietzsche</p>
-            <a href="#" class="btn btn-primary">More Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book8.JPG" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">The Art Of War</h5>
-            <p class="card-text">Author: Sun Tzu</p>
-            <a href="#" class="btn btn-primary">More Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <img src="/images/book6.jpg" class="card-img-top book-image" alt="Book 3">
-          <div class="card-body">
-            <h5 class="card-title">The Art Of War</h5>
-            <p class="card-text">Author: Sun Tzu</p>
-            <a href="#" class="btn btn-primary">More Details</a>
+
+        <div class="col-lg-4">
+          <div class="card">
+            <img src="/images/book6.jpg" class="card-img-top book-image" alt="Book 6">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 6</h5>
+              <p class="card-text">Book Description 6</p>
+              <a href="#" class="btn btn-primary">More Details</a>
+              <div class="rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Footer -->
-<!--<footer class="footer bg-dark text-white py-4">-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-6 text-center text-md-left">-->
-<!--        <p>&copy; 2023 Book Site. All rights reserved.</p>-->
-<!--      </div>-->
-<!--      <div class="col-md-6 text-center text-md-right">-->
-<!--        <ul class="list-inline">-->
-<!--          <li class="list-inline-item"><a href="#">Home</a></li>-->
-<!--          <li class="list-inline-item"><a href="#">Books</a></li>-->
-<!--          <li class="list-inline-item"><a href="#">About</a></li>-->
-<!--          <li class="list-inline-item"><a href="#">Contact</a></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</footer>-->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script>
+      // Activate the carousel and set auto-scrolling
+      document.addEventListener("DOMContentLoaded", function () {
+        var carousel = new bootstrap.Carousel(document.getElementById("imageCarousel"), {
+          interval: 5000, // Change slide every 5 seconds
+          pause: false // Do not pause on hover
+        });
+      });
+    </script>
 </div>
 </body>
 
