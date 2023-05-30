@@ -29,13 +29,39 @@
             </ul>
         </li>
     </ul>
+    <!--    Book dropdown -->
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >Books</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a class="dropdown-item" th:href="@{createBook}">New</a>
+                </li>
+                <li><a class="dropdown-item" th:href="@{BooksList}">List</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!--    Category dropdown -->
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >Categories</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" >
+                    <a class="dropdown-item" th:href="@{createCategory}">New</a>
+                </li>
+                <li><a class="dropdown-item" th:href="@{CategoriesList}">List</a></li>
+            </ul>
+        </li>
+    </ul>
     <!--    Publishing House dropdown -->
+
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >Publishing Houses</a>
             <ul class="dropdown-menu">
                 <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-                <a class="dropdown-item" th:href="@{createPubHouse}">New</a>
+                    <a class="dropdown-item" th:href="@{createPubHouse}">New</a>
                 </li>
                 <li><a class="dropdown-item" th:href="@{pubHousesList}">List</a></li>
             </ul>
