@@ -8,7 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 @Configuration
@@ -95,7 +98,13 @@ public class SecurityConfig {
                 User.withUsername("author").password(passwordEncoder.encode("author123")).roles("AUTHOR").build(),
                 User.withUsername("user").password(passwordEncoder.encode("user123")).roles("USER").build()
 
+
         );
     }
 
+
+//    @Bean
+//    public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource){
+//        return jdbcUserDetailsManager(dataSource);
+//    }
 }

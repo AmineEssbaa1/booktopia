@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Edition - Thymeleaf</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Book Edition - Thymeleaf</a>
+  </div>
+</nav>
+<main class="container mt-4">
+  <form th:action="@{updateBook}" method="post">
+    <div class="form-group">
+      <label for="idBook">Book ID:</label>
+      <input type="text" class="form-control" id="idBook" name="idBook" th:value="${booksJsp.idBook}">
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" name="title" th:value="${booksJsp.title}">
+    </div>
+    <div class="form-group">
+      <label for="ISBN">ISBN:</label>
+      <input type="text" class="form-control" id="ISBN" name="ISBN" th:value="${booksJsp.ISBN}">
+    </div>
+    <div class="form-group">
+      <label for="publisher">Publisher:</label>
+      <input type="text" class="form-control" id="publisher" name="publisher" th:value="${booksJsp.publisher}">
+    </div>
+    <div class="form-group">
+      <label for="designationBook">Designation:</label>
+      <input type="text" class="form-control" id="designationBook" name="designationBook" th:value="${booksJsp.designationBook}">
+    </div>
+    <div class="form-group">
+      <label for="datePublishing">Date of Publishing:</label>
+      <input type="text" class="form-control" id="datePublishing" name="datePublishing" th:value="${booksJsp.datePublishing}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</main>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
